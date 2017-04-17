@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title RandomDataGen
+		// CSS
+		link(rel='stylesheet', type='text/css', href='/css/normalize.css')
+		link(rel='stylesheet', type='text/css', href='/css/skeleton.css')
+		link(rel='stylesheet', type='text/css', href='/css/style.css')
+		// Meta Tags
+		meta(name='viewport', content='width=device-width, initial-scale=1 user-scalable=no')
+	body
+		// Body Content
+		.container
+			.row
+				h1 Random Data Gen
+				p Select the data you want in your object and receive an API link.
+				.row
+					.four.columns
+						button.u-full-width#fullName(onClick='toggleSelected(this.id)') fullName
+					.four.columns
+						button.u-full-width#firstName(onClick='toggleSelected(this.id)') firstName
+					.four.columns
+						button.u-full-width#lastName(onClick='toggleSelected(this.id)') lastName
+				.row
+					.four.columns
+						button.u-full-width#username(onClick='toggleSelected(this.id)') username
+					.four.columns
+						button.u-full-width#gender(onClick='toggleSelected(this.id)') gender
+					.four.columns
+						button.u-full-width#age(onClick='toggleSelected(this.id)') age
+				.row
+					.four.columns
+						button.u-full-width#email(onClick='toggleSelected(this.id)') email
+					.four.columns
+						button.u-full-width#phoneNumber(onClick='toggleSelected(this.id)') phoneNumber
+					.four.columns
+						button.u-full-width#twitter(onClick='toggleSelected(this.id)') twitter
+				.row
+					.six.columns
+						input.u-full-width#objectAmount(placeholder='Amount of Objects')
+					.six.columns
+						button.u-full-width.button-primary(onClick='gen()') Generate
+				.row
+					.twelve.columns
+						input.u-full-width#linkOutput(placeholder='Your API link', readonly)
+				.footer
+					hr
+					p Made by 
+						a(target='blank_', href='http://github.com/seven11nash') @seven11nash
+		// JS
+		script(rel='preload', src='/js/jquery.min.js')
+		script(rel='preload', src='/js/gen.js')
