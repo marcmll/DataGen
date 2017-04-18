@@ -24,15 +24,15 @@ Finally, to get the project going, in the first tab you used, type:
 nodemon .
 ```
 
-You can now view the project by opening your browser and typing in ```localhost:3000```
+You can now view the project by opening your browser and typing in ```localhost:8080```
 
 The API:
 -
-When viewing the project in the browser with ```localhost:3000```, you will see a simple GUI. This enables you to select the data you want to have generated and given out, and how many objects you want to generate. After selecting all your preferred settings, press the 'Generate' button. You will be presented with the API link that you can use to retrieve the generated data. Using tools such as [Postman](https://www.getpostman.com/), you can send a GET request to the generated link, giving you the generated data.
+When viewing the project in the browser with ```localhost:8080```, you will see a simple GUI. This enables you to select the data you want to have generated and given out, and how many objects you want to generate. After selecting all your preferred settings, press the 'Generate' button. You will be presented with the API link that you can use to retrieve the generated data. Using tools such as [Postman](https://www.getpostman.com/), you can send a GET request to the generated link, giving you the generated data.
 
 #### An Example:
 
-GET request sent to ```localhost:3000/api/CkSkoV```, result:
+GET request sent to ```localhost:8080/api/CkSkoV```, result:
 
 ```json
 {
