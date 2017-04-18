@@ -28,8 +28,17 @@ h1 {
 p {
 	font-weight: 300;
 	font-size: 14px;
-	line-height: 14px;
+	line-height: 16px;
 	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 550px) {
+
+	p {
+		font-size: 18px;
+		line-height: 22px;
+	}
+	
 }
 
 input {
@@ -69,6 +78,16 @@ button {
 	transform: translateY(-50%);
 }
 
+@media screen and (max-width: 500px) {
+	.container {
+		position: static;
+		top: 0%;
+		padding-top: 30px;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
 /* Footer */
 
 .footer {
@@ -97,14 +116,10 @@ button {
 		font-weight: 700;
 	}
 
-	@media screen and (max-width: 500px) {
+	@media screen and (max-width: 550px) {
 
 		.footer hr {
 			width: 100px;
-		}
-
-		.footer p {
-			font-size: 10px;
 		}
 		
 	}
