@@ -58,7 +58,7 @@ app.post('/addDataSet', function (req, res, next) {
 
                 client.hmset(id, 'amount', amount, 'data', selected, function(err, reply) {
                     console.log('Key Created: ' + id);
-                    var link = 'localhost:3000/api/' + id;
+                    var link = 'http://datagen.xyz/api/' + id;
                     var data = {
                         id: id,
                         link: link
