@@ -29,7 +29,8 @@ p {
 	font-weight: 300;
 	font-size: 14px;
 	line-height: 16px;
-	margin-bottom: 20px;
+	margin: 0 auto 20px auto;
+	width: 80%;
 }
 
 @media screen and (max-width: 550px) {
