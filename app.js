@@ -3,9 +3,9 @@ var express = require('express'),
     app = express(),
     redis = require("redis"),
     client = redis.createClient(),
-    bodyParser = require("body-parser"),
-    Chance = require('chance'),
-    chance = new Chance();
+    bodyParser = require("body-parser");
+// var Chance = require('chance'),
+//     chance = new Chance();
 
 // Check for Redis
 client.on("error", function (err) {
@@ -28,8 +28,8 @@ var port = process.env.PORT || 8080;
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-// Router
-var router = express.Router();
+// // Router
+// var router = express.Router();
 
 // Index
 app.get('/', function (req, res) {
@@ -77,81 +77,81 @@ app.post('/addDataSet', function (req, res, next) {
 
 });
 
-// Assemble Single Object Data
-function assembleData(data) {
+// // Assemble Single Object Data
+// function assembleData(data) {
 
-    var assembledObject = {},
-        gender = chance.gender(),
-        firstName = chance.first({ gender: gender }),
-        lastName = chance.last(),
-        fullName = firstName + ' ' + lastName,
-        username = firstName.charAt(0).toLowerCase() + lastName;
+//     var assembledObject = {},
+//         gender = chance.gender(),
+//         firstName = chance.first({ gender: gender }),
+//         lastName = chance.last(),
+//         fullName = firstName + ' ' + lastName,
+//         username = firstName.charAt(0).toLowerCase() + lastName;
 
-    data.forEach(function(type, index) {
+//     data.forEach(function(type, index) {
 
-        switch (type) {
-            case 'fullName':
-                assembledObject.fullName = fullName;
-                break;
-            case 'firstName':
-                assembledObject.firstName = firstName;
-                break;
-            case 'lastName':
-                assembledObject.lastName = lastName;
-                break;
-            case 'username':
-                assembledObject.username = username;
-                break;
-            case 'gender':
-                assembledObject.gender = gender;
-                break;
-            case 'age':
-                assembledObject.age = chance.age();
-                break;
-            case 'email':
-                assembledObject.email = username + '@example.com';
-                break;
-            case 'phoneNumber':
-                assembledObject.phoneNumber = chance.phone({ country: 'us' });
-                break;
-            case 'twitter':
-                assembledObject.twitter = '@' + username;
-                break;
-            default:
-                console.log('ERROR.... type not known');
-        }
+//         switch (type) {
+//             case 'fullName':
+//                 assembledObject.fullName = fullName;
+//                 break;
+//             case 'firstName':
+//                 assembledObject.firstName = firstName;
+//                 break;
+//             case 'lastName':
+//                 assembledObject.lastName = lastName;
+//                 break;
+//             case 'username':
+//                 assembledObject.username = username;
+//                 break;
+//             case 'gender':
+//                 assembledObject.gender = gender;
+//                 break;
+//             case 'age':
+//                 assembledObject.age = chance.age();
+//                 break;
+//             case 'email':
+//                 assembledObject.email = username + '@example.com';
+//                 break;
+//             case 'phoneNumber':
+//                 assembledObject.phoneNumber = chance.phone({ country: 'us' });
+//                 break;
+//             case 'twitter':
+//                 assembledObject.twitter = '@' + username;
+//                 break;
+//             default:
+//                 console.log('ERROR.... type not known');
+//         }
 
-    });
+//     });
 
-    // Give back the assembled object
-    return assembledObject;
-}
+//     // Give back the assembled object
+//     return assembledObject;
+// }
 
-// API
-router.get('/:id', function (req, res) {
+// // API
+// router.get('/:id', function (req, res) {
 
-    var id = req.params.id;
+//     var id = req.params.id;
 
-    // Get data & amount for the id
-    client.hmget(id, 'amount', 'data', function(err, reply) {
+//     // Get data & amount for the id
+//     client.hmget(id, 'amount', 'data', function(err, reply) {
 
-        var processedData = {},
-            amount = reply[0],
-            data = reply[1].split(',');
+//         var processedData = {},
+//             amount = reply[0],
+//             data = reply[1].split(',');
 
-        for(var i = 0; i < amount; i++) {
-            processedData[i] = assembleData(data);
-        }
+//         for(var i = 0; i < amount; i++) {
+//             processedData[i] = assembleData(data);
+//         }
 
-        // Send JSON response
-        res.json(processedData);
+//         // Send JSON response
+//         res.json(processedData);
 
-    });
+//     });
 
-});
+// });
 
-// All routes prefixed => /api
-app.use('/api', router);
+// // All routes prefixed => /api
+// app.use('/api', router);
  
 // Listen
 app.listen(port);
